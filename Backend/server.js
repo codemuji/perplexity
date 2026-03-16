@@ -4,7 +4,7 @@ import connectToDB from "./src/config/database.js";
 import { testAi } from "./src/services/ai.service.js";
 
 connectToDB();
-testAi();
+// testAi();
 app.listen(3000, () => {
   console.log("server is running on port 3000");
 });
