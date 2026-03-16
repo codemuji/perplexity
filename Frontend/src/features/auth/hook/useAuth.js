@@ -43,4 +43,10 @@ export function useAuth() {
       dispatch(setLoading(false));
     }
   }
+
+  return {
+    handleRegister,
+    handleLogin,
+    handleGetMe,
+  };
 }
