@@ -1,25 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "../hook/useAuth.js";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const user = useSelector((state) => state.auth.user);
+  const loading = useSelector((state) => state.auth.loading);
 
-  const handleSubmit = (e) => {
+  const { handleLogin } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login submitted:", formData);
+    const payload = {
+      email,
+      password,
+    };
+    await handleLogin(email, password);
+    navigate("/");
   };
 
+  if (!loading && user) {
+    return <Navigate to="/" replace />;
+  }
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md rounded-2xl border border-[#31b8c6]/40 bg-zinc-900/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-sm">
@@ -39,8 +47,10 @@ const Login = () => {
               id="email"
               name="email"
               type="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               placeholder="you@example.com"
               required
               className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 outline-none transition focus:border-[#31b8c6] focus:ring-2 focus:ring-[#31b8c6]/30"
@@ -58,8 +68,10 @@ const Login = () => {
               id="password"
               name="password"
               type="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               placeholder="Enter your password"
               required
               className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 outline-none transition focus:border-[#31b8c6] focus:ring-2 focus:ring-[#31b8c6]/30"
