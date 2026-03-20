@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.dashboard-light-shell {
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(circle at 8% 9%, rgba(255, 255, 255, 0.95), rgba(240, 244, 248, 0.7) 36%, transparent 62%),
+    linear-gradient(180deg, #eef2f7 0%, #e8edf4 100%);
+}
+
+.dashboard-light-grid {
+  filter: drop-shadow(0 22px 36px rgba(102, 121, 150, 0.16));
+}
+
+.dashboard-sidebar-light {
+  background:
+    linear-gradient(180deg, rgba(249, 250, 252, 0.98) 0%, rgba(243, 246, 250, 0.96) 100%),
+    repeating-linear-gradient(145deg, rgba(255, 255, 255, 0.34) 0, rgba(255, 255, 255, 0.34) 4px, transparent 4px, transparent 10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(203, 213, 225, 0.35),
+    0 14px 30px rgba(148, 163, 184, 0.14);
+}
+
+.history-chip {
+  background: #e2e6ee;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 2px 4px rgba(148, 163, 184, 0.2);
+}
+
+.history-chip:hover {
+  background: #d8dde6;
+}
+
+.dashboard-main-light {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(251, 252, 255, 0.95), rgba(244, 247, 251, 0.8) 30%, transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(226, 232, 240, 0.75),
+    0 16px 30px rgba(148, 163, 184, 0.16);
+}
+
+.user-message-bubble {
+  background: #f0f2f5;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 4px 12px rgba(148, 163, 184, 0.16);
+}
+
+.input-gradient {
+  background: linear-gradient(to top, #ffffff 64%, rgba(255, 255, 255, 0.92) 82%, transparent 100%);
+}
+
+.chat-input-wrap {
+  background: #f0f2f5;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 8px 18px rgba(148, 163, 184, 0.2);
+}
+
+.icon-btn:hover {
+  color: #334155;
+  background-color: rgba(226, 232, 240, 0.85);
+}
+
+.send-message-btn {
+  background: linear-gradient(145deg, #5c9dfb, #3b82f6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 6px 14px rgba(59, 130, 246, 0.35);
+}
+
+.send-message-btn:hover {
+  background: linear-gradient(145deg, #3b82f6, #2f71df);
+}
+
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 999px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-light-grid {
+    height: auto;
+    min-height: calc(100vh - 2rem);
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar-light {
+    width: 100%;
+  }
+
+  .dashboard-main-light {
+    min-height: 60vh;
+  }
+}
