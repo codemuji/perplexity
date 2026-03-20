@@ -26,10 +26,41 @@ export const useChat = () => {
       addNewMessage({ chatId: chat._id, content: message, role: "user" }),
     );
     dispatch(
-      addNewMessage({ chatId: chat._id, content: aiMessage.content, role: aiMessage.role }),
+      addNewMessage({
+        chatId: chat._id,
+        content: aiMessage.content,
+        role: aiMessage.role,
+      }),
     );
     dispatch(setCurrentChatId(chat._id));
     dispatch(setLoading(false));
+  }
+
+  async function handleGetChats() {
+    dispatch(setLoading(true));
+    const data = await getChats();
+    const { chats } = data;
+    dispatch(
+      setChats(
+        chats.reduce((acc, chat) => {
+          acc[chat._id] = {
+            id: chat._id,
+            title: chat.title,
+            messages: [],
+            lastUpdated: chat.updatedAt,
+          };
+          return acc;
+        }, {}),
+      ),
+    );
+    dispatch(setLoading(false));
+  }
+
+  async function handleOpenChat(chatId) {
+    const data = await getMessages(chatId);
+    const { messages } = data;
+
+    
   }
   return {
     initializeSocketConnection,
@@ -38,5 +69,6 @@ export const useChat = () => {
     getChats,
     getMessages,
     deleteChat,
+    handleGetChats,
   };
 };
