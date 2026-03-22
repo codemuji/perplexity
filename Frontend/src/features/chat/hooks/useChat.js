@@ -12,6 +12,7 @@ import {
   setLoading,
   createNewChat,
   addNewMessage,
+  addMessages,
 } from "../chat.slice.js";
 import { useDispatch } from "react-redux";
 
@@ -60,8 +61,14 @@ export const useChat = () => {
     const data = await getMessages(chatId);
     const { messages } = data;
 
-    
+    const formattedMessages = messages.map((msg) => ({
+      content: msg.content,
+      role: msg.role,
+    }));
+    dispatch(addMessages({ chatId, messages: formattedMessages }));
+    dispatch(setCurrentChatId(chatId));
   }
+
   return {
     initializeSocketConnection,
     handleSendMessage,
@@ -70,5 +77,6 @@ export const useChat = () => {
     getMessages,
     deleteChat,
     handleGetChats,
+    handleOpenChat,
   };
 };

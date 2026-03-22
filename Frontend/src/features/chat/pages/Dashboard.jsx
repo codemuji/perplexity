@@ -79,7 +79,7 @@ const Dashboard = () => {
   };
 
   const openChat = (chatId) => {
-    
+    chat.handleOpenChat(chatId);
   };
   return (
     <main className="dashboard-light-shell min-h-screen w-full p-4 md:p-8">
@@ -95,7 +95,7 @@ const Dashboard = () => {
           <nav className="flex flex-col gap-2">
             {Object.values(chats).map((chat, index) => (
               <button
-                onClick={openChat(chat._id)}
+                onClick={() => openChat(chat.id)}
                 key={chat.id}
                 className="cursor-pointer history-chip w-full rounded-full px-5 py-3 text-left text-[15px] text-slate-700 transition-colors"
                 type="button"
