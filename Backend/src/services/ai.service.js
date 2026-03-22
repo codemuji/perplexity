@@ -4,7 +4,11 @@ import {
   HumanMessage,
   SystemMessage,
   AIMessage,
-} from "@langchain/core/messages";
+  tool,
+  createAgent,
+} from "langchain";
+import * as z from "zod";
+import { searchInternet } from "./internet.service.js";
 
 const model = new ChatGoogleGenerativeAI({
   model: "gemini-2.5-flash-lite",
@@ -15,23 +19,30 @@ const mistralModel = new ChatMistralAI({
   apiKey: process.env.MISTRAL_API_KEY,
 });
 
-// export async function testAi() {
-//   model.invoke("Can you write code for me").then((response) => {
-//     console.log(response.text);
-//   });
-// }
+const SearchInternetTool = tool(searchInternet, {
+  name: "searchInternet",
+  description: "Use this tool to get the latest information from the internet.",
+  schema: z.object({
+    query: z.string().describe("The search query to look up on the internet."),
+  }),
+});
+
+const agent = createAgent({
+  model: model,
+  tools: [SearchInternetTool],
+});
 
 export async function generateResponse(messages) {
-  const response = await model.invoke(
-    messages.map((msg) => {
+  const response = await agent.invoke({
+    messages: messages.map((msg) => {
       if (msg.role === "user") {
         return new HumanMessage(msg.content);
       } else if (msg.role === "ai") {
         return new AIMessage(msg.content);
       }
     }),
-  );
-  return response.text;
+  });
+  return response.messages[response.messages.length - 1].text;
 }
 
 export async function generateChatTitle(message) {
