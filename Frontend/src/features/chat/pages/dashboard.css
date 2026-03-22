@@ -3,66 +3,66 @@
 .dashboard-light-shell {
   font-family: "Inter", sans-serif;
   background:
-    radial-gradient(circle at 8% 9%, rgba(255, 255, 255, 0.95), rgba(240, 244, 248, 0.7) 36%, transparent 62%),
-    linear-gradient(180deg, #eef2f7 0%, #e8edf4 100%);
+    radial-gradient(circle at 8% 9%, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.75) 36%, transparent 62%),
+    linear-gradient(180deg, #0f172a 0%, #020617 100%);
 }
 
 .dashboard-light-grid {
-  filter: drop-shadow(0 22px 36px rgba(102, 121, 150, 0.16));
+  filter: drop-shadow(0 22px 36px rgba(2, 6, 23, 0.6));
 }
 
 .dashboard-sidebar-light {
   background:
-    linear-gradient(180deg, rgba(249, 250, 252, 0.98) 0%, rgba(243, 246, 250, 0.96) 100%),
-    repeating-linear-gradient(145deg, rgba(255, 255, 255, 0.34) 0, rgba(255, 255, 255, 0.34) 4px, transparent 4px, transparent 10px);
+    linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.96) 100%),
+    repeating-linear-gradient(145deg, rgba(30, 41, 59, 0.34) 0, rgba(30, 41, 59, 0.34) 4px, transparent 4px, transparent 10px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 0 rgba(203, 213, 225, 0.35),
-    0 14px 30px rgba(148, 163, 184, 0.14);
+    inset 0 1px 0 rgba(71, 85, 105, 0.5),
+    inset 0 -1px 0 rgba(30, 41, 59, 0.7),
+    0 14px 30px rgba(2, 6, 23, 0.45);
 }
 
 .history-chip {
-  background: #e2e6ee;
+  background: #1e293b;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 2px 4px rgba(148, 163, 184, 0.2);
+    inset 0 1px 0 rgba(71, 85, 105, 0.5),
+    0 2px 4px rgba(2, 6, 23, 0.25);
 }
 
 .history-chip:hover {
-  background: #d8dde6;
+  background: #334155;
 }
 
 .dashboard-main-light {
   background:
-    radial-gradient(circle at 100% 0%, rgba(251, 252, 255, 0.95), rgba(244, 247, 251, 0.8) 30%, transparent 55%),
-    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    radial-gradient(circle at 100% 0%, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.8) 30%, transparent 55%),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset 0 -1px 0 rgba(226, 232, 240, 0.75),
-    0 16px 30px rgba(148, 163, 184, 0.16);
+    inset 0 1px 0 rgba(51, 65, 85, 0.65),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.9),
+    0 16px 30px rgba(2, 6, 23, 0.5);
 }
 
 .user-message-bubble {
-  background: #f0f2f5;
+  background: #1e293b;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.88),
-    0 4px 12px rgba(148, 163, 184, 0.16);
+    inset 0 1px 0 rgba(71, 85, 105, 0.55),
+    0 4px 12px rgba(2, 6, 23, 0.4);
 }
 
 .input-gradient {
-  background: linear-gradient(to top, #ffffff 64%, rgba(255, 255, 255, 0.92) 82%, transparent 100%);
+  background: linear-gradient(to top, #0f172a 64%, rgba(15, 23, 42, 0.92) 82%, transparent 100%);
 }
 
 .chat-input-wrap {
-  background: #f0f2f5;
+  background: #111827;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    0 8px 18px rgba(148, 163, 184, 0.2);
+    inset 0 1px 0 rgba(55, 65, 81, 0.8),
+    0 8px 18px rgba(2, 6, 23, 0.45);
 }
 
 .icon-btn:hover {
-  color: #334155;
-  background-color: rgba(226, 232, 240, 0.85);
+  color: #e2e8f0;
+  background-color: rgba(51, 65, 85, 0.85);
 }
 
 .send-message-btn {
@@ -85,8 +85,9 @@
 }
 
 .chat-scroll::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
+  background-color: #475569;
   border-radius: 999px;
+  display: none;
 }
 
 @media (max-width: 1024px) {

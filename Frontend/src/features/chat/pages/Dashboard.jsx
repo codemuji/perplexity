@@ -79,13 +79,13 @@ const Dashboard = () => {
   };
 
   const openChat = (chatId) => {
-    chat.handleOpenChat(chatId);
+    chat.handleOpenChat(chatId,chats);
   };
   return (
     <main className="dashboard-light-shell min-h-screen w-full p-4 md:p-8">
       <div className="dashboard-light-grid mx-auto flex h-[calc(100vh-2rem)] w-full max-w-6xl gap-6 md:gap-8 lg:h-[min(768px,calc(100vh-4rem))]">
-        <aside className="dashboard-sidebar-light flex w-64 flex-shrink-0 flex-col rounded-[20px] border border-slate-200 p-8">
-          <div className="mb-8 flex items-center gap-3 px-2 text-slate-700">
+        <aside className="dashboard-sidebar-light flex w-64 flex-shrink-0 flex-col rounded-[20px] border border-slate-700/60 p-8">
+          <div className="mb-8 flex items-center gap-3 px-2 text-slate-100">
             <AsteriskIcon />
             <h1 className="text-[17px] font-medium tracking-tight">
               Perplexity
@@ -97,7 +97,7 @@ const Dashboard = () => {
               <button
                 onClick={() => openChat(chat.id)}
                 key={chat.id}
-                className="cursor-pointer history-chip w-full rounded-full px-5 py-3 text-left text-[15px] text-slate-700 transition-colors"
+                className="cursor-pointer history-chip w-full rounded-full px-5 py-3 text-left text-[15px] text-slate-200 transition-colors"
                 type="button"
               >
                 {chat.title}
@@ -105,12 +105,12 @@ const Dashboard = () => {
             ))}
           </nav>
 
-          <div className="mt-auto pt-6 text-xs text-slate-500">
+          <div className="mt-auto pt-6 text-xs text-slate-400">
             {user?.username || user?.email || "Guest user"}
           </div>
         </aside>
 
-        <section className="dashboard-main-light relative flex flex-1 flex-col overflow-hidden rounded-[20px] border border-slate-200">
+        <section className="dashboard-main-light relative flex flex-1 flex-col overflow-hidden rounded-[20px] border border-slate-700/60">
           <div className="chat-scroll flex-1 overflow-y-auto p-8 pb-36 md:p-12 md:pb-36">
             <div className="space-y-5">
               {chats[currentChatId]?.messages.map((message) => (
@@ -125,8 +125,8 @@ const Dashboard = () => {
                   <div
                     className={
                       message.role === "user"
-                        ? "user-message-bubble max-w-[82%] rounded-2xl rounded-tr-md px-5 py-3.5 text-[15px] leading-relaxed text-slate-800"
-                        : "max-w-[82%] rounded-2xl rounded-tl-md bg-white px-5 py-3.5 text-[15px] leading-relaxed text-slate-800 shadow-[0_6px_14px_rgba(148,163,184,0.14)] border border-slate-100"
+                        ? "user-message-bubble max-w-[82%] rounded-2xl rounded-tr-md px-5 py-3.5 text-[15px] leading-relaxed text-slate-100"
+                        : "max-w-[82%] rounded-2xl rounded-tl-md  px-5 py-3.5 text-[15px] leading-relaxed text-slate-100 "
                     }
                   >
                     {message.role === "user" ? (
@@ -145,9 +145,9 @@ const Dashboard = () => {
               onSubmit={handleSendMessage}
               className="mx-auto w-full max-w-4xl"
             >
-              <div className="chat-input-wrap flex items-center rounded-full border border-slate-200 p-2 pl-6">
+              <div className="chat-input-wrap flex items-center rounded-full border border-slate-700/60 p-2 pl-6">
                 <input
-                  className="flex-1 border-none bg-transparent py-3 text-[15px] text-slate-700 placeholder:text-slate-500 focus:outline-none"
+                  className="flex-1 border-none bg-transparent py-3 text-[15px] text-slate-100 placeholder:text-slate-400 focus:outline-none"
                   placeholder="Type your message..."
                   type="text"
                   value={message}
